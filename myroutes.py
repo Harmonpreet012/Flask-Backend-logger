@@ -51,7 +51,18 @@ def sendlogdata(user_name, type):
 
         tempwb.save(user_name+".xlsx")
         return send_file(user_name+".xlsx", cache_timeout=0)
-        
+    else:
+        returnthis = {}
+        wb2 = load_workbook('Logindata.xlsx')
+        loginsheet = wb2.active
+
+        top=1
+        for i in range(2, loginsheet.max_row+1):
+            if(loginsheet["A"+str(i)].value == user_name):
+                temp = {"Date":loginsheet["B"+str(top)].value , "Time":loginsheet["C"+str(top)].value }
+                returnthis[str(top)] = temp
+                top =top+1
+        return jsonify(returnthis)
     
 def logLogin(user_name):
     wb2 = load_workbook('Logindata.xlsx')
