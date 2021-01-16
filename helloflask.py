@@ -1,4 +1,4 @@
-from flask import Flask, redirect, url_for, request, render_template, flash
+from flask import Flask
 import myroutes 
 
 app = Flask(__name__, static_url_path='/static')
