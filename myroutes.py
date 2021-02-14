@@ -93,7 +93,7 @@ def loginAuth():
             if(sheet1['C' + str(row)].value == password):
                 return redirect(url_for('profile', user_name =sheet1['A' + str(row)].value, img_file_path =sheet1['D' + str(row)].value) )
             
-    return 'login failed'
+    return jsonify({'status':'login failed'})
 
 # $env:FLASK_APP = "helloflask.py"
 # $env:FLASK_ENV = "development"
